@@ -80,7 +80,7 @@ class LeftJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.LeftJoinOperationDataRowArguments#provideLeftSizeSmallerThenRightSizeCollections")
+    @MethodSource("org.example.join.LeftJoinOperationDataRowArguments#provideRightSizeSmallerThenLeftSizeCollections")
     void rightSizeSmallerThenLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
