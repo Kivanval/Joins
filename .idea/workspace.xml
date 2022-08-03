@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d670fec-57c6-4bdd-a8d3-f6103b3e968b" name="Changes" comment="First Frame">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/InnerJoinOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/InnerJoinOperation.java" afterDir="false" />
+    <list default="true" id="9d670fec-57c6-4bdd-a8d3-f6103b3e968b" name="Changes" comment="Advanced Frame #1">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/JoinOperationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/JoinOperationUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LeftJoinOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LeftJoinOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RightJoinOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RightJoinOperation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +99,7 @@
       <updated>1659526205945</updated>
       <workItem from="1659526207276" duration="128000" />
       <workItem from="1659526349893" duration="948000" />
-      <workItem from="1659531522943" duration="10466000" />
+      <workItem from="1659531522943" duration="12313000" />
     </task>
     <task id="LOCAL-00001" summary="Init Commit #1">
       <created>1659526558959</created>
@@ -120,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659537627648</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Advanced Frame #1">
+      <created>1659543824395</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659543824395</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +142,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init Commit #1" />
     <MESSAGE value="First Frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Frame" />
+    <MESSAGE value="Advanced Frame #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Advanced Frame #1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
