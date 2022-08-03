@@ -1,5 +1,6 @@
 package org.example;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -7,7 +8,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InnerJoinOperationTest {
 
@@ -48,7 +50,8 @@ class InnerJoinOperationTest {
     void partiallyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                               Collection<DataRow<Integer, String>> rightCollection,
                                               Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertIterableEquals(resultCollection, joinOperation.join(leftCollection, rightCollection));
+        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
+                joinOperation.join(leftCollection, rightCollection)));
     }
 
     @ParameterizedTest
@@ -56,7 +59,8 @@ class InnerJoinOperationTest {
     void fullyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                           Collection<DataRow<Integer, String>> rightCollection,
                                           Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertIterableEquals(resultCollection, joinOperation.join(leftCollection, rightCollection));
+        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
+                joinOperation.join(leftCollection, rightCollection)));
     }
 
     @ParameterizedTest
@@ -64,15 +68,17 @@ class InnerJoinOperationTest {
     void leftSizeSmallerThenRightSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertIterableEquals(resultCollection, joinOperation.join(leftCollection, rightCollection));
+        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
+                joinOperation.join(leftCollection, rightCollection)));
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.InnerJoinOperationDataRowArguments#provideLeftSizeSmallerThenRightSizeCollections")
+    @MethodSource("org.example.InnerJoinOperationDataRowArguments#provideRightSizeSmallerThenLeftSizeCollections")
     void rightSizeSmallerThenLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertIterableEquals(resultCollection, joinOperation.join(leftCollection, rightCollection));
+        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
+                joinOperation.join(leftCollection, rightCollection)));
     }
 
     @ParameterizedTest
@@ -80,6 +86,7 @@ class InnerJoinOperationTest {
     void rightSizeEqualsLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                 Collection<DataRow<Integer, String>> rightCollection,
                                                 Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertIterableEquals(resultCollection, joinOperation.join(leftCollection, rightCollection));
+        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
+                joinOperation.join(leftCollection, rightCollection)));
     }
 }

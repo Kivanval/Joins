@@ -99,7 +99,7 @@ class InnerJoinOperationDataRowArguments {
                                 new DataRow<>(1, "Berlin"),
                                 new DataRow<>(3, "Budapest")
                         ),
-                        List.of(
+                        Arrays.asList(
                                 new JoinedDataRow<>(0, "Ukraine", "Kyiv")
                         )
                 )
@@ -114,10 +114,10 @@ class InnerJoinOperationDataRowArguments {
                                 new DataRow<>(1, "Germany"),
                                 new DataRow<>(2, "France")
                         ),
-                        List.of(
+                        Arrays.asList(
                                 new DataRow<>(0, "Kyiv")
                         ),
-                        List.of(
+                        Arrays.asList(
                                 new JoinedDataRow<>(0, "Ukraine", "Kyiv")
                         )
                 )
