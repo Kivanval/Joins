@@ -23,26 +23,26 @@ public class LeftJoinOperation<K, V1, V2>
                 resultCollection.add(joinedDataRow);
             }
         } else {
-            for (DataRow<K, V1> leftDataRow : leftCollection) {
-                boolean hasJoin = false;
-                for (DataRow<K, V2> rightDataRow : rightCollection) {
-                    if (leftDataRow.getKey().equals(rightDataRow.getKey())) {
-                        JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
-                                leftDataRow,
-                                rightDataRow
-                        );
-                        resultCollection.add(joinedDataRow);
-                        hasJoin = true;
-                    }
-                }
-                if (!hasJoin) {
+            Map<K, V1> hashMap = JoinOperationUtils.dataRowCollectionToHashMap(leftCollection);
+            for (DataRow<K, V2> rightDataRow : rightCollection) {
+                if (hashMap.containsKey(rightDataRow.getKey())) {
+                    V1 leftValue = hashMap.get(rightDataRow.getKey());
                     JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
-                            leftDataRow.getKey(),
-                            leftDataRow.getValue(),
-                            null
+                            rightDataRow.getKey(),
+                            leftValue,
+                            rightDataRow.getValue()
                     );
                     resultCollection.add(joinedDataRow);
+                    hashMap.remove(rightDataRow.getKey());
                 }
+            }
+            for (Map.Entry<K, V1> memoryLeftMapEntry : hashMap.entrySet()) {
+                JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
+                        memoryLeftMapEntry.getKey(),
+                        memoryLeftMapEntry.getValue(),
+                        null
+                );
+                resultCollection.add(joinedDataRow);
             }
         }
         return resultCollection;

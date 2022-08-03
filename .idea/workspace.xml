@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d670fec-57c6-4bdd-a8d3-f6103b3e968b" name="Changes" comment="Advanced Frame #1">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/JoinOperationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/JoinOperationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LeftJoinOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LeftJoinOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RightJoinOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RightJoinOperation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

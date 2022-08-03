@@ -11,26 +11,26 @@ public class RightJoinOperation<K, V1, V2>
         ArrayList<JoinedDataRow<K, V1, V2>> resultCollection = new ArrayList<>(JoinOperationUtils
                 .minSize(leftCollection, rightCollection));
         if (leftCollection.size() >= rightCollection.size()) {
-            for (DataRow<K, V2> rightDataRow : rightCollection) {
-                boolean hasJoin = false;
-                for (DataRow<K, V1> leftDataRow : leftCollection) {
-                    if (rightDataRow.getKey().equals(leftDataRow.getKey())) {
-                        JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
-                                leftDataRow,
-                                rightDataRow
-                        );
-                        resultCollection.add(joinedDataRow);
-                        hasJoin = true;
-                    }
-                }
-                if (!hasJoin) {
+            Map<K, V2> hashMap = JoinOperationUtils.dataRowCollectionToHashMap(rightCollection);
+            for (DataRow<K, V1> leftDataRow : leftCollection) {
+                if (hashMap.containsKey(leftDataRow.getKey())) {
+                    V2 rightValue = hashMap.get(leftDataRow.getKey());
                     JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
-                            rightDataRow.getKey(),
-                            null,
-                            rightDataRow.getValue()
+                            leftDataRow.getKey(),
+                            leftDataRow.getValue(),
+                            rightValue
                     );
                     resultCollection.add(joinedDataRow);
+                    hashMap.remove(leftDataRow.getKey());
                 }
+            }
+            for (Map.Entry<K, V2> memoryRightMapEntry : hashMap.entrySet()) {
+                JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
+                        memoryRightMapEntry.getKey(),
+                        null,
+                        memoryRightMapEntry.getValue()
+                );
+                resultCollection.add(joinedDataRow);
             }
         } else {
             Map<K, V1> hashMap = JoinOperationUtils.dataRowCollectionToHashMap(leftCollection);
