@@ -30,7 +30,7 @@ class LeftJoinOperationTest {
     @ParameterizedTest
     @MethodSource("org.example.join.LeftJoinOperationDataRowArguments#provideEmptyRightCollection")
     void emptyRightCollectionTest(Collection<DataRow<Integer, String>> leftCollection,
-                                  Collection<DataRow<Integer, String>> resultCollection) {
+                                  Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
         Collection<DataRow<Integer, String>> rightCollection = new ArrayList<>();
         assertTrue(CollectionUtils.isEqualCollection(resultCollection,
                 joinOperation.join(leftCollection, rightCollection)));
