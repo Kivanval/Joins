@@ -1,10 +1,10 @@
-package org.example;
+package org.example.join.join;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-public class InnerJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V2> {
+public class LeftJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V2> {
 
     @Override
     public Collection<JoinedDataRow<K, V1, V2>> hashMapOnRightCollection(Collection<DataRow<K, V1>> leftCollection,
@@ -13,15 +13,13 @@ public class InnerJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V
                 .minSize(leftCollection, rightCollection));
         Map<K, V2> hashMap = JoinOperationUtils.dataRowCollectionToHashMap(rightCollection);
         for (DataRow<K, V1> leftDataRow : leftCollection) {
-            if (hashMap.containsKey(leftDataRow.getKey())) {
-                V2 rightValue = hashMap.get(leftDataRow.getKey());
-                JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
-                        leftDataRow.getKey(),
-                        leftDataRow.getValue(),
-                        rightValue
-                );
-                resultCollection.add(joinedDataRow);
-            }
+            V2 rightValue = hashMap.get(leftDataRow.getKey());
+            JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
+                    leftDataRow.getKey(),
+                    leftDataRow.getValue(),
+                    rightValue
+            );
+            resultCollection.add(joinedDataRow);
         }
         return resultCollection;
     }
@@ -41,7 +39,16 @@ public class InnerJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V
                         rightDataRow.getValue()
                 );
                 resultCollection.add(joinedDataRow);
+                hashMap.remove(rightDataRow.getKey());
             }
+        }
+        for (Map.Entry<K, V1> memoryLeftMapEntry : hashMap.entrySet()) {
+            JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(
+                    memoryLeftMapEntry.getKey(),
+                    memoryLeftMapEntry.getValue(),
+                    null
+            );
+            resultCollection.add(joinedDataRow);
         }
         return resultCollection;
     }

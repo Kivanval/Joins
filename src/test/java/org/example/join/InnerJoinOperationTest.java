@@ -1,6 +1,10 @@
-package org.example;
+package org.example.join;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.example.join.join.DataRow;
+import org.example.join.join.InnerJoinOperation;
+import org.example.join.join.JoinOperation;
+import org.example.join.join.JoinedDataRow;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,10 +15,11 @@ import java.util.Collection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class RightJoinOperationTest {
+class InnerJoinOperationTest {
 
     JoinOperation<DataRow<Integer, String>, DataRow<Integer, String>,
-            JoinedDataRow<Integer, String, String>> joinOperation = new RightJoinOperation<>();
+            JoinedDataRow<Integer, String, String>> joinOperation = new InnerJoinOperation<>();
+
 
     @Test
     void emptyCollectionsTest() {
@@ -24,32 +29,28 @@ class RightJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#provideEmptyRightCollection")
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideCollection")
     void emptyRightCollectionTest(Collection<DataRow<Integer, String>> leftCollection) {
         Collection<DataRow<Integer, String>> rightCollection = new ArrayList<>();
         assertEquals(0, joinOperation.join(leftCollection, rightCollection).size());
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#provideEmptyLeftCollection")
-    void emptyLeftCollectionTest(Collection<DataRow<Integer, String>> rightCollection,
-                                 Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideCollection")
+    void emptyLeftCollectionTest(Collection<DataRow<Integer, String>> rightCollection) {
         Collection<DataRow<Integer, String>> leftCollection = new ArrayList<>();
-        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
-                joinOperation.join(leftCollection, rightCollection)));
+        assertEquals(0, joinOperation.join(leftCollection, rightCollection).size());
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#provideNonIntersectingCollections")
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideNonIntersectingCollections")
     void nonIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
-                                        Collection<DataRow<Integer, String>> rightCollection,
-                                        Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
-                joinOperation.join(leftCollection, rightCollection)));
+                                        Collection<DataRow<Integer, String>> rightCollection) {
+        assertEquals(0, joinOperation.join(leftCollection, rightCollection).size());
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#providePartiallyIntersectingCollections")
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#providePartiallyIntersectingCollections")
     void partiallyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                               Collection<DataRow<Integer, String>> rightCollection,
                                               Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -58,7 +59,7 @@ class RightJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#provideFullyIntersectingCollections")
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideFullyIntersectingCollections")
     void fullyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                           Collection<DataRow<Integer, String>> rightCollection,
                                           Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -67,7 +68,7 @@ class RightJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#provideLeftSizeSmallerThenRightSizeCollections")
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideLeftSizeSmallerThenRightSizeCollections")
     void leftSizeSmallerThenRightSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -76,7 +77,7 @@ class RightJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#provideLeftSizeSmallerThenRightSizeCollections")
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideRightSizeSmallerThenLeftSizeCollections")
     void rightSizeSmallerThenLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -85,7 +86,7 @@ class RightJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.RightJoinOperationDataRowArguments#provideRightSizeEqualsLeftSizeCollections")
+    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideRightSizeEqualsLeftSizeCollections")
     void rightSizeEqualsLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                 Collection<DataRow<Integer, String>> rightCollection,
                                                 Collection<JoinedDataRow<Integer, String, String>> resultCollection) {

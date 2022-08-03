@@ -1,9 +1,10 @@
-package org.example;
+package org.example.join;
 
+import org.example.join.join.DataRow;
+import org.example.join.join.JoinedDataRow;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class LeftJoinOperationDataRowArguments {

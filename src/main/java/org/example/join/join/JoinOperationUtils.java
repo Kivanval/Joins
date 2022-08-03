@@ -1,4 +1,4 @@
-package org.example;
+package org.example.join.join;
 
 import java.util.*;
 import java.util.stream.Collectors;
