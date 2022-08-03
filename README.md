@@ -8,7 +8,7 @@
 2. Create a new **private** repository with name firstName_secondName (i.e. ivan_ivaniv)
 3. On your local machine create a **Maven** project.
 4. Init git repo in your root project directory: '*git init*'
-5. Add remote origin: '*git remote add origin https://github.com/xyz/ivan_ivaniv.git*'
+5. Add remote origin: '*git remote add origin https://github.com/Kivanval/ivan_kyrylov.git*'
 6. Make changes in your project
 7. Check that your project is compiled (use maven commands for that)
 8. Commit and push changed files
