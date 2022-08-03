@@ -9,6 +9,7 @@ import lombok.Data;
 public class DataRow <K, V>{
 
     private K key;
+
     private V value;
 
 }

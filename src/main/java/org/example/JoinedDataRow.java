@@ -10,7 +10,6 @@ public class JoinedDataRow<K, V1, V2> {
     private V1 leftValue;
     private V2 rightValue;
 
-
     public JoinedDataRow(DataRow<K, V1> leftDataRow, DataRow<K, V2> rightDataRow) {
         if (!leftDataRow.getKey().equals(rightDataRow.getKey())) {
             throw new IllegalArgumentException();
