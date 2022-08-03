@@ -5,14 +5,6 @@ import java.util.Collection;
 import java.util.Map;
 
 public class LeftJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V2> {
-    @Override
-    public Collection<JoinedDataRow<K, V1, V2>> join(Collection<DataRow<K, V1>> leftCollection,
-                                                     Collection<DataRow<K, V2>> rightCollection) {
-        if (leftCollection.size() >= rightCollection.size())
-            return hashMapOnRightCollection(leftCollection, rightCollection);
-        else
-            return hashMapOnLeftCollection(leftCollection, rightCollection);
-    }
 
     @Override
     public Collection<JoinedDataRow<K, V1, V2>> hashMapOnRightCollection(Collection<DataRow<K, V1>> leftCollection,
