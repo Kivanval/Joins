@@ -24,6 +24,7 @@ public class InnerJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V
                         rightValue
                 );
                 resultCollection.add(joinedDataRow);
+                hashMap.remove(leftDataRow.getKey());
             }
         }
         return resultCollection;
@@ -44,6 +45,7 @@ public class InnerJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V
                         rightDataRow.getValue()
                 );
                 resultCollection.add(joinedDataRow);
+                hashMap.remove(rightDataRow.getKey());
             }
         }
         return resultCollection;

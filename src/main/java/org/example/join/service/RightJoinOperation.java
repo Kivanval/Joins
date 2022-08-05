@@ -11,8 +11,7 @@ public class RightJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V
 
     @Override
     public Collection<JoinedDataRow<K, V1, V2>> hashMapOnRightCollection(Collection<DataRow<K, V1>> leftCollection, Collection<DataRow<K, V2>> rightCollection) {
-        Collection<JoinedDataRow<K, V1, V2>> resultCollection = new ArrayList<>(JoinOperationUtils
-                .minSize(leftCollection, rightCollection));
+        Collection<JoinedDataRow<K, V1, V2>> resultCollection = new ArrayList<>(rightCollection.size());
         Map<K, V2> hashMap = JoinOperationUtils.dataRowCollectionToHashMap(rightCollection);
         for (DataRow<K, V1> leftDataRow : leftCollection) {
             if (hashMap.containsKey(leftDataRow.getKey())) {
@@ -39,8 +38,7 @@ public class RightJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V
 
     @Override
     public Collection<JoinedDataRow<K, V1, V2>> hashMapOnLeftCollection(Collection<DataRow<K, V1>> leftCollection, Collection<DataRow<K, V2>> rightCollection) {
-        Collection<JoinedDataRow<K, V1, V2>> resultCollection = new ArrayList<>(JoinOperationUtils
-                .minSize(leftCollection, rightCollection));
+        Collection<JoinedDataRow<K, V1, V2>> resultCollection = new ArrayList<>(rightCollection.size());
         Map<K, V1> hashMap = JoinOperationUtils.dataRowCollectionToHashMap(leftCollection);
         for (DataRow<K, V2> rightDataRow : rightCollection) {
             V1 leftValue = hashMap.get(rightDataRow.getKey());
