@@ -1,4 +1,5 @@
-package org.example.join;
+package org.example.join.service;
+
 
 import org.example.join.model.DataRow;
 import org.example.join.model.JoinedDataRow;
@@ -7,9 +8,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-public class RightJoinOperationDataRowArguments {
+class InnerJoinOperationArguments {
 
-    static Stream<Arguments> provideEmptyRightCollection() {
+    static Stream<Arguments> provideCollection() {
         return Stream.of(
                 Arguments.of(
                         Arrays.asList(
@@ -20,26 +21,9 @@ public class RightJoinOperationDataRowArguments {
                 ),
                 Arguments.of(
                         Arrays.asList(
-                                new DataRow<>(3, "Budapest"),
-                                new DataRow<>(4, "Riga"),
-                                new DataRow<>(5, "Tokyo")
-                        )
-                )
-        );
-    }
-
-    static Stream<Arguments> provideEmptyLeftCollection() {
-        return Stream.of(
-                Arguments.of(
-                        Arrays.asList(
-                                new DataRow<>(0, "Ukraine"),
-                                new DataRow<>(1, "Germany"),
-                                new DataRow<>(2, "France")
-                        ),
-                        Arrays.asList(
-                                new JoinedDataRow<>(0, null, "Ukraine"),
-                                new JoinedDataRow<>(1, null, "Germany"),
-                                new JoinedDataRow<>(2, null, "France")
+                                new DataRow<>(0, "Kyiv"),
+                                new DataRow<>(1, "Berlin"),
+                                new DataRow<>(3, "Budapest")
                         )
                 )
         );
@@ -57,11 +41,6 @@ public class RightJoinOperationDataRowArguments {
                                 new DataRow<>(3, "Budapest"),
                                 new DataRow<>(4, "Riga"),
                                 new DataRow<>(5, "Tokyo")
-                        ),
-                        Arrays.asList(
-                                new JoinedDataRow<>(3, null, "Budapest"),
-                                new JoinedDataRow<>(4, null, "Riga"),
-                                new JoinedDataRow<>(5, null, "Tokyo")
                         )
                 )
         );
@@ -82,8 +61,7 @@ public class RightJoinOperationDataRowArguments {
                         ),
                         Arrays.asList(
                                 new JoinedDataRow<>(0, "Ukraine", "Kyiv"),
-                                new JoinedDataRow<>(1, "Germany", "Berlin"),
-                                new JoinedDataRow<>(3, null, "Budapest")
+                                new JoinedDataRow<>(1, "Germany", "Berlin")
                         )
                 )
         );
@@ -123,9 +101,7 @@ public class RightJoinOperationDataRowArguments {
                                 new DataRow<>(3, "Budapest")
                         ),
                         Arrays.asList(
-                                new JoinedDataRow<>(0, "Ukraine", "Kyiv"),
-                                new JoinedDataRow<>(1, null, "Berlin"),
-                                new JoinedDataRow<>(3, null, "Budapest")
+                                new JoinedDataRow<>(0, "Ukraine", "Kyiv")
                         )
                 )
         );
@@ -164,10 +140,10 @@ public class RightJoinOperationDataRowArguments {
                         ),
                         Arrays.asList(
                                 new JoinedDataRow<>(0, "Ukraine", "Kyiv"),
-                                new JoinedDataRow<>(1, "Germany", "Berlin"),
-                                new JoinedDataRow<>(3, null, "Budapest")
+                                new JoinedDataRow<>(1, "Germany", "Berlin")
                         )
                 )
         );
     }
+
 }

@@ -1,4 +1,4 @@
-package org.example.join;
+package org.example.join.service;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.example.join.model.DataRow;
@@ -29,28 +29,28 @@ class InnerJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideCollection")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#provideCollection")
     void emptyRightCollectionTest(Collection<DataRow<Integer, String>> leftCollection) {
         Collection<DataRow<Integer, String>> rightCollection = new ArrayList<>();
         assertEquals(0, joinOperation.join(leftCollection, rightCollection).size());
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideCollection")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#provideCollection")
     void emptyLeftCollectionTest(Collection<DataRow<Integer, String>> rightCollection) {
         Collection<DataRow<Integer, String>> leftCollection = new ArrayList<>();
         assertEquals(0, joinOperation.join(leftCollection, rightCollection).size());
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideNonIntersectingCollections")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#provideNonIntersectingCollections")
     void nonIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                         Collection<DataRow<Integer, String>> rightCollection) {
         assertEquals(0, joinOperation.join(leftCollection, rightCollection).size());
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#providePartiallyIntersectingCollections")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#providePartiallyIntersectingCollections")
     void partiallyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                               Collection<DataRow<Integer, String>> rightCollection,
                                               Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -59,7 +59,7 @@ class InnerJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideFullyIntersectingCollections")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#provideFullyIntersectingCollections")
     void fullyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                           Collection<DataRow<Integer, String>> rightCollection,
                                           Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -68,7 +68,7 @@ class InnerJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideLeftSizeSmallerThenRightSizeCollections")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#provideLeftSizeSmallerThenRightSizeCollections")
     void leftSizeSmallerThenRightSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -77,7 +77,7 @@ class InnerJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideRightSizeSmallerThenLeftSizeCollections")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#provideRightSizeSmallerThenLeftSizeCollections")
     void rightSizeSmallerThenLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
@@ -86,7 +86,7 @@ class InnerJoinOperationTest {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.join.InnerJoinOperationDataRowArguments#provideRightSizeEqualsLeftSizeCollections")
+    @MethodSource("org.example.join.service.InnerJoinOperationArguments#provideRightSizeEqualsLeftSizeCollections")
     void rightSizeEqualsLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                 Collection<DataRow<Integer, String>> rightCollection,
                                                 Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
