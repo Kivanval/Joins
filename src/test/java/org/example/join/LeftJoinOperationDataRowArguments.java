@@ -1,7 +1,7 @@
 package org.example.join;
 
-import org.example.join.join.DataRow;
-import org.example.join.join.JoinedDataRow;
+import org.example.join.model.DataRow;
+import org.example.join.model.JoinedDataRow;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.Arrays;

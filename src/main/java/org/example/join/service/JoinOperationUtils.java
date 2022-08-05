@@ -1,4 +1,6 @@
-package org.example.join.join;
+package org.example.join.service;
+
+import org.example.join.model.DataRow;
 
 import java.util.*;
 import java.util.stream.Collectors;

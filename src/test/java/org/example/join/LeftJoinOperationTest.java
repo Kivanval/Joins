@@ -1,10 +1,10 @@
 package org.example.join;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.example.join.join.DataRow;
-import org.example.join.join.JoinOperation;
-import org.example.join.join.JoinedDataRow;
-import org.example.join.join.LeftJoinOperation;
+import org.example.join.model.DataRow;
+import org.example.join.model.JoinedDataRow;
+import org.example.join.service.JoinOperation;
+import org.example.join.service.LeftJoinOperation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class LeftJoinOperationTest {
 
     JoinOperation<DataRow<Integer, String>, DataRow<Integer, String>,
-            JoinedDataRow<Integer, String, String>> joinOperation = new LeftJoinOperation<>();
+                JoinedDataRow<Integer, String, String>> joinOperation = new LeftJoinOperation<>();
 
     @Test
     void emptyCollectionsTest() {

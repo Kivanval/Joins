@@ -1,4 +1,4 @@
-package org.example.join.join;
+package org.example.join.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
