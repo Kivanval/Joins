@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-public class LeftJoinOperation<K, V1, V2> implements FastJoinOperation<K, V1, V2> {
+public class LeftJoinOperation<K, V1, V2> implements HashJoinOperation<K, V1, V2> {
 
     @Override
     public Collection<JoinedDataRow<K, V1, V2>> hashMapOnRightCollection(Collection<DataRow<K, V1>> leftCollection,

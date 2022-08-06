@@ -5,7 +5,7 @@ import org.example.join.model.JoinedDataRow;
 
 import java.util.Collection;
 
-public interface FastJoinOperation<K, V1, V2>
+public interface HashJoinOperation<K, V1, V2>
         extends JoinOperation<DataRow<K, V1>, DataRow<K, V2>, JoinedDataRow<K, V1, V2>> {
 
     default Collection<JoinedDataRow<K, V1, V2>> join(Collection<DataRow<K, V1>> leftCollection,
