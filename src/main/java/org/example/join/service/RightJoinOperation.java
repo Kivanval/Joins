@@ -48,6 +48,7 @@ public class RightJoinOperation<K, V1, V2> implements HashJoinOperation<K, V1, V
                     rightDataRow.getValue()
             );
             resultCollection.add(joinedDataRow);
+            hashMap.remove(rightDataRow.getKey());
         }
         return resultCollection;
     }

@@ -22,6 +22,7 @@ public class LeftJoinOperation<K, V1, V2> implements HashJoinOperation<K, V1, V2
                     rightValue
             );
             resultCollection.add(joinedDataRow);
+            hashMap.remove(leftDataRow.getKey());
         }
         return resultCollection;
     }
