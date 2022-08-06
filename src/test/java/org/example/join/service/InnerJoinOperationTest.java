@@ -59,8 +59,10 @@ class InnerJoinOperationTest {
     void partiallyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                               Collection<DataRow<Integer, String>> rightCollection,
                                               Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
-                joinOperation.join(leftCollection, rightCollection)));
+        assertTrue(CollectionUtils.isEqualCollection(
+                resultCollection,
+                joinOperation.join(leftCollection, rightCollection))
+        );
     }
 
     @ParameterizedTest
@@ -68,8 +70,10 @@ class InnerJoinOperationTest {
     void fullyIntersectingCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                           Collection<DataRow<Integer, String>> rightCollection,
                                           Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
-                joinOperation.join(leftCollection, rightCollection)));
+        assertTrue(CollectionUtils.isEqualCollection(
+                resultCollection,
+                joinOperation.join(leftCollection, rightCollection))
+        );
     }
 
     @ParameterizedTest
@@ -77,8 +81,10 @@ class InnerJoinOperationTest {
     void leftSizeSmallerThenRightSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
-                joinOperation.join(leftCollection, rightCollection)));
+        assertTrue(CollectionUtils.isEqualCollection(
+                resultCollection,
+                joinOperation.join(leftCollection, rightCollection))
+        );
         verify(joinOperation).hashMapOnLeftCollection(leftCollection, rightCollection);
     }
 
@@ -87,8 +93,10 @@ class InnerJoinOperationTest {
     void rightSizeSmallerThenLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                      Collection<DataRow<Integer, String>> rightCollection,
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
-                joinOperation.join(leftCollection, rightCollection)));
+        assertTrue(CollectionUtils.isEqualCollection(
+                resultCollection,
+                joinOperation.join(leftCollection, rightCollection))
+        );
         verify(joinOperation).hashMapOnRightCollection(leftCollection, rightCollection);
     }
 
@@ -97,8 +105,10 @@ class InnerJoinOperationTest {
     void rightSizeEqualsLeftSizeCollectionsTest(Collection<DataRow<Integer, String>> leftCollection,
                                                 Collection<DataRow<Integer, String>> rightCollection,
                                                 Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
-        assertTrue(CollectionUtils.isEqualCollection(resultCollection,
-                joinOperation.join(leftCollection, rightCollection)));
+        assertTrue(CollectionUtils.isEqualCollection(
+                resultCollection,
+                joinOperation.join(leftCollection, rightCollection))
+        );
         verify(joinOperation).hashMapOnRightCollection(leftCollection, rightCollection);
     }
 }
