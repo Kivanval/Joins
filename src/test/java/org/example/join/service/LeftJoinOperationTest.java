@@ -3,22 +3,27 @@ package org.example.join.service;
 import org.apache.commons.collections4.CollectionUtils;
 import org.example.join.model.DataRow;
 import org.example.join.model.JoinedDataRow;
-import org.example.join.service.JoinOperation;
-import org.example.join.service.LeftJoinOperation;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.verify;
 
+@ExtendWith(MockitoExtension.class)
 class LeftJoinOperationTest {
 
-    JoinOperation<DataRow<Integer, String>, DataRow<Integer, String>,
-                JoinedDataRow<Integer, String, String>> joinOperation = new LeftJoinOperation<>();
+    @Spy
+    LeftJoinOperation<Integer, String, String> joinOperation;
 
     @Test
     void emptyCollectionsTest() {
@@ -77,6 +82,7 @@ class LeftJoinOperationTest {
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
         assertTrue(CollectionUtils.isEqualCollection(resultCollection,
                 joinOperation.join(leftCollection, rightCollection)));
+        verify(joinOperation).hashMapOnLeftCollection(leftCollection, rightCollection);
     }
 
     @ParameterizedTest
@@ -86,6 +92,7 @@ class LeftJoinOperationTest {
                                                      Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
         assertTrue(CollectionUtils.isEqualCollection(resultCollection,
                 joinOperation.join(leftCollection, rightCollection)));
+        verify(joinOperation).hashMapOnRightCollection(leftCollection, rightCollection);
     }
 
     @ParameterizedTest
@@ -95,5 +102,6 @@ class LeftJoinOperationTest {
                                                 Collection<JoinedDataRow<Integer, String, String>> resultCollection) {
         assertTrue(CollectionUtils.isEqualCollection(resultCollection,
                 joinOperation.join(leftCollection, rightCollection)));
+        verify(joinOperation).hashMapOnRightCollection(leftCollection, rightCollection);
     }
 }
